@@ -105,5 +105,6 @@ This solution simulates a real-world event-driven architecture for content moder
 ---
 
 ## YouTube Demo
+**Demo Video:** [Watch on YouTube](https://youtu.be/-VwC4XMAPOM)
 
 

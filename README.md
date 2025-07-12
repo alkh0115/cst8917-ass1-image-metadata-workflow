@@ -48,6 +48,27 @@ This solution simulates a real-world event-driven architecture for content moder
 
 ---
 
+## How It Works (Deployment Summary)
+
+1. **Local Setup:**
+   - Built using Python 3.10 and Azure Functions Core Tools.
+   - Functions implemented: `starter_function`, `orchestrator_function`, `extract_metadata`, `store_metadata`.
+
+2. **Deployment to Azure:**
+   - Deployed via Azure CLI using `func azure functionapp publish <app-name>`.
+   - Bound to Blob Storage container named `images-input`.
+   - Connected to Azure SQL Database using output binding.
+
+3. **Test Flow:**
+   - Uploaded test image: `test-upload-1.jpg` to container.
+   - Verified function execution using Azure Log Stream and Application Insights.
+   - Confirmed metadata inserted into Azure SQL Database with query:
+     ```sql
+     SELECT * FROM dbo.image_metadata ORDER BY created_at DESC;
+     ```
+
+---
+
 ## How to Test
 
 1. Upload a `.jpg`, `.png`, or `.gif` to the **`images-input`** blob container.

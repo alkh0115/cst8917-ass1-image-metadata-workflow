@@ -8,24 +8,28 @@ This solution simulates a real-world event-driven architecture for content moder
 
 ---
 
-## Architecture
-
-```mermaid
-flowchart TD
-    A[Blob Upload: images-input container] --> B[Blob Trigger Function: starter_function]
-    B --> C[Durable Orchestrator Function]
-    C --> D[Activity Function: extract_metadata]
-    C --> E[Activity Function: store_metadata with SQL Binding]
-    E --> F[Azure SQL Database]
-
----
-
 ## Features
 
 - **Blob Trigger**: Listens for new `.jpg`, `.png`, or `.gif` files in the container.
 - **Durable Orchestration**: Coordinates function flow.
 - **Metadata Extraction**: Gets file size, format, width, and height.
 - **SQL Storage**: Stores extracted data using Azure SQL output binding.
+
+---
+
+## Architecture Overview
+
+```
+[1] User uploads image to Blob Storage container: images-input
+ ↓
+[2] Blob Trigger Function (starter_function)
+ ↓
+[3] Durable Orchestrator Function
+   ├──> [Activity 1] extract_metadata
+   └──> [Activity 2] store_metadata (via Azure SQL Output Binding)
+ ↓
+[4] Azure SQL Database
+```
 
 ---
 

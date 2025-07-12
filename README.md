@@ -15,9 +15,8 @@ flowchart TD
     A[Blob Upload: images-input container] --> B[Blob Trigger Function: starter_function]
     B --> C[Durable Orchestrator Function]
     C --> D[Activity Function: extract_metadata]
-    C --> E[Activity Function: store_metadata (SQL Binding)]
+    C --> E[Activity Function: store_metadata with SQL Binding]
     E --> F[Azure SQL Database]
-```
 
 ---
 
